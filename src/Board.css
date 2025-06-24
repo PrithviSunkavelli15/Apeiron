@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@400;500&display=swap');
+
+.board-section {
+    background: #000000;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+/* Top Image */
+.board-image-container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.board-full-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Description */
+.board-description {
+    max-width: 1050px;
+    margin: 60px auto;
+    padding: 0 24px;
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 1.75;
+    color: #ffffff;
+    animation: fadeIn 2s ease-in-out both;
+}
+
+.board-highlight {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: #ffffff;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+/* Member Grid Layout */
+.member-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 40px 20px 100px;
+}
+
+.member-row {
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+    flex-wrap: wrap;
+}
+
+.member-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 180px;
+}
+
+.member-photo {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid #333333;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    margin-bottom: 12px;
+}
+
+.member-info {
+    color: #f5f5f5;
+    text-align: center;
+}
+
+.member-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #ffffff;
+}
+
+.member-position {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #cccccc;
+    margin-bottom: 6px;
+}
+
+.member-school,
+.member-other {
+    font-size: 0.9rem;
+    color: #bbbbbb;
+    line-height: 1.4;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .board-image-container {
+        height: auto;
+    }
+
+    .board-full-image {
+        height: auto;
+        min-height: 60vh;
+    }
+
+    .board-description {
+        font-size: 1.1rem;
+        margin: 40px 20px;
+        line-height: 1.6;
+    }
+
+    .member-row {
+        justify-content: center;
+    }
+
+    .member-card {
+        width: 45%;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .board-description {
+        font-size: 1rem;
+        padding: 0 16px;
+        margin: 30px auto;
+    }
+
+    .member-card {
+        width: 80%;
+    }
+
+    .member-photo {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 4;
+    }
+}
+
+/* Larger photos for top members */
+.large-member-card .member-photo {
+    height: 320px;
+    width: 250px;
+}

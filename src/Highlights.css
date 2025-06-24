@@ -1,0 +1,126 @@
+.highlights-section {
+    background: radial-gradient(ellipse at center, #000000, #0d0000, #1a0000);
+    color: #ffffff;
+    font-family: 'Orbitron', sans-serif;
+    padding-bottom: 80px;
+}
+
+.highlights-image-container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.highlights-full-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Event layout */
+.event-section {
+    margin-top: 80px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.event-title {
+    font-size: 4rem;
+    color: #ff5b5b;
+    text-shadow: 0 0 6px #ff5b5b, 0 0 12px #ff1a1a, 0 0 20px #ff0000;
+    margin-bottom: 8px;
+}
+
+.event-date {
+    font-size: 1.3rem;
+    color: #ffdfdf;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 8px rgba(255, 91, 91, 0.8);
+}
+
+.event-tagline {
+    font-size: 1.1rem;
+    color: #cccccc;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.event-media {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.event-video {
+    width: 90%;
+    max-width: 920px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 91, 91, 0.3);
+}
+
+.event-photos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 110px;
+    margin-top: 20px;
+}
+
+.event-photo {
+    width: 300px;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 12px #ff333366;
+    transition: transform 0.3s ease;
+}
+
+.event-photo:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .event-title {
+        font-size: 1.9rem;
+    }
+
+    .event-date {
+        font-size: 1rem;
+    }
+
+    .event-tagline {
+        font-size: 1rem;
+    }
+
+    .event-video {
+        width: 100%;
+    }
+
+    .event-photo {
+        width: 90%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .event-title {
+        font-size: 1.6rem;
+    }
+
+    .event-date {
+        font-size: 0.9rem;
+    }
+
+    .event-tagline {
+        font-size: 0.95rem;
+    }
+
+    .event-photo {
+        width: 100%;
+        height: auto;
+    }
+}

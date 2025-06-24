@@ -1,0 +1,164 @@
+/* Entire page container */
+.landing-page {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: radial-gradient(ellipse at bottom, #050505, #0a0a0a, #0d001a);
+    color: #d6b3ff;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Hero section */
+.landing-hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Video and Image */
+.landing-video,
+.landing-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    transition: opacity 3s ease-in-out;
+    z-index: 1;
+}
+
+.fade-out-smooth {
+    opacity: 0;
+    z-index: 0;
+}
+
+.hidden-image {
+    opacity: 0;
+    z-index: 2;
+}
+
+.fade-in-smooth {
+    opacity: 1;
+    z-index: 2;
+}
+
+/* Mute Button */
+.unmute-button {
+    position: absolute;
+    top: 65px;
+    left: 15px;
+    z-index: 10;
+    background: rgba(30, 0, 60, 0.6);
+    color: #d6b3ff;
+    border: 1px solid #6a1b9a;
+    padding: 10px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.unmute-button:hover {
+    background: rgba(80, 0, 130, 0.8);
+    color: #fff;
+}
+
+/* Value Prop Section */
+.value-prop-container {
+    padding: 100px 20px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    animation: fadeIn 2s ease 1s both;
+}
+
+/* Title */
+.value-prop-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 48px;
+    /*text-shadow:
+        0 0 10px #bb86fc,
+        0 0 20px #7f39fb,
+        0 0 40px #5a00d1; */
+}
+
+/* Image Row */
+.image-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 0 10px;
+}
+
+/* Image Card */
+.image-card {
+    width: 30%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 16px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 12px rgba(164, 77, 255, 0.4);
+    text-decoration: none;
+}
+
+.image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    display: block;
+}
+
+.image-card:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.2);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --------- RESPONSIVE FIX FOR MOBILE --------- */
+@media (max-width: 768px) {
+
+    .landing-video,
+    .landing-image {
+        object-fit: contain;
+        background-color: black;
+    }
+
+    .value-prop-title {
+        font-size: 2rem;
+    }
+
+    .value-prop-container {
+        padding: 60px 20px;
+    }
+
+    .unmute-button {
+        top: 20px;
+        left: 10px;
+        font-size: 12px;
+        padding: 8px 14px;
+    }
+
+    .image-card {
+        width: 100%;
+    }
+}

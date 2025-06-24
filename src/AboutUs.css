@@ -1,0 +1,26 @@
+/* src/pages/AboutUs.css */
+
+.about-image-container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.about-full-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Ensure full height is respected on all screen sizes */
+@media (max-height: 500px) {
+    .about-image-container {
+        height: auto;
+    }
+
+    .about-full-image {
+        height: auto;
+        min-height: 100vh;
+    }
+}
