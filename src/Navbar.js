@@ -20,6 +20,11 @@ const Navbar = () => {
         setAboutDropdown(false);
     };
 
+    const handleBuyTickets = () => {
+        window.open("https://flite.city/org/the-apeiron-group", "_blank");
+        closeMenu();
+    };
+
     return (
         <nav className="navbar">
             <div className="navbar-container">
@@ -54,13 +59,13 @@ const Navbar = () => {
 
                     {isMobile && (
                         <li className="mobile-login">
-                            <button onClick={closeMenu}>Log In</button>
+                            <button onClick={handleBuyTickets}>Buy Tickets</button>
                         </li>
                     )}
                 </ul>
 
                 <div className="login-button desktop-only">
-                    <button>Log In</button>
+                    <button onClick={handleBuyTickets}>Buy Tickets</button>
                 </div>
             </div>
         </nav>

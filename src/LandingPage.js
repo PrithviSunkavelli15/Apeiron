@@ -6,6 +6,7 @@ import landingVideo from "./videoOneEdit.mp4";
 import NY from "./NY.png";
 import Philly from "./Philly.png";
 import PS from "./PS.png";
+import mapAP from "./mapAP.png"; // ✅ Added map image import
 
 const LandingPage = () => {
     const videoRef = useRef(null);
@@ -18,7 +19,7 @@ const LandingPage = () => {
         if (video) {
             video.currentTime = 0;
             video.muted = muted;
-            video.play().catch(() => { });
+            video.play().catch(() => {});
         }
     }, []);
 
@@ -81,6 +82,11 @@ const LandingPage = () => {
 
             <div className="value-prop-container">
                 <h1 className="value-prop-title">The Next-Gen Nightlife Brand</h1>
+
+                {/* ✅ New Map Image */}
+                <div className="map-image-container">
+                    <img src={mapAP} alt="Apeiron Map" className="map-image" />
+                </div>
 
                 <div className="image-row">
                     <Link to="/events" className="image-card">

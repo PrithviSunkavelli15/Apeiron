@@ -48,7 +48,7 @@
 .member-grid {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 80px;
     padding: 40px 20px 100px;
 }
 
@@ -73,7 +73,7 @@
     border-radius: 12px;
     border: 1px solid #333333;
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-    margin-bottom: 12px;
+    margin-bottom: 5px;
 }
 
 .member-info {
@@ -93,14 +93,7 @@
     font-size: 1rem;
     font-weight: 500;
     color: #cccccc;
-    margin-bottom: 6px;
-}
-
-.member-school,
-.member-other {
-    font-size: 0.9rem;
-    color: #bbbbbb;
-    line-height: 1.4;
+    margin-bottom: 40px;
 }
 
 /* Animation */
@@ -116,7 +109,17 @@
     }
 }
 
-/* Responsive */
+/* Hover effect */
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 1024px) {
     .board-image-container {
         height: auto;
@@ -135,11 +138,19 @@
 
     .member-row {
         justify-content: center;
+        gap: 60px;
     }
 
     .member-card {
-        width: 45%;
-        margin: 10px 0;
+        width: 40%;
+        max-width: 220px;
+        margin: 20px 0;
+    }
+
+    .member-photo {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
     }
 }
 
@@ -150,19 +161,28 @@
         margin: 30px auto;
     }
 
+    .member-row {
+        gap: 40px;
+    }
+
     .member-card {
-        width: 80%;
+        width: 85%;
+        max-width: 300px;
     }
 
     .member-photo {
         width: 100%;
         height: auto;
-        aspect-ratio: 3 / 4;
+        aspect-ratio: 1 / 1;
+        border-radius: 10px;
     }
-}
 
-/* Larger photos for top members */
-.large-member-card .member-photo {
-    height: 320px;
-    width: 250px;
+    .member-name {
+        font-size: 1rem;
+    }
+
+    .member-position {
+        font-size: 0.95rem;
+        margin-bottom: 24px;
+    }
 }

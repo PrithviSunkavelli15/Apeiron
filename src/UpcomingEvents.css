@@ -1,14 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
 .events-section {
-    background: radial-gradient(ellipse at bottom, #0a0000, #140000, #000000);
+    background-color: black;
     width: 100%;
     overflow: hidden;
+    text-align: center;
+    padding-bottom: 60px;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
 }
 
+/* Top Landing Image */
 .events-image-container {
     width: 100%;
-    height: 100vh;
+    height: 80vh;
     overflow: hidden;
 }
 
@@ -19,49 +24,124 @@
     object-position: center;
 }
 
-.events-message {
-    text-align: center;
-    font-family: 'Orbitron', 'Audiowide', sans-serif;
-    color: #ffffff;
-    font-size: 1.3rem;
-    margin: 40px auto;
-    max-width: 800px;
-    padding: 0 24px;
-    animation: fadeIn 2s ease-in-out both;
+/* Layout */
+.events-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 60px 40px;
+    flex-wrap: wrap;
+}
 
-    /* Neon glow */
-   /* text-shadow:
-        0 0 6px #e6e2e2,
-        0 0 12px #ece9e9,
-        0 0 20px white,
-        0 0 30px white; */
+/* Left Section: Title & Button */
+.events-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 240px;
+}
+
+.event-title-line {
+    font-size: 4.2rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: white;
+    text-shadow: 0 0 6px #ffffff,
+        0 0 10px #e0e0e0,
+        0 0 10px #ffffff;
+}
+
+.event-subtitle {
+    display: block;
+    font-size: 4.2rem;
+    margin-top: 0.25rem;
+    color: white;
+    text-shadow: 0 0 0px #ffffff,
+        0 0 10px #e0e0e0,
+        0 0 10px #ffffff;
+}
+
+/* Buy Tickets Button */
+.buy-tickets-button {
+    margin-top: 24px;
+    padding: 14px 30px;
+    background-color: #ff5b5b;
+    color: white;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.buy-tickets-button:hover {
+    background-color: #e94a4a;
+}
+
+/* Right Section: Media */
+.events-right {
+    flex: 1.2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 300px;
+    max-width: 700px;
+}
+
+.events-media {
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
+    background-color: black;
+    border-radius: 12px;
+    transition: opacity 3s ease-in-out, transform 0.3s ease;
+}
+
+.events-media:hover {
+    transform: scale(1.03);
+}
+
+/* Fade In Animation */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 3s ease-in-out forwards;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
     to {
         opacity: 1;
-        transform: translateY(0);
     }
 }
 
+/* Responsive for mobile devices */
 @media (max-width: 768px) {
-    .events-image-container {
-        height: auto;
+    .events-row {
+        flex-direction: column-reverse;
+        padding: 30px 20px;
     }
 
-    .events-full-image {
-        height: auto;
-        min-height: 100vh;
+    .events-left {
+        margin-top: 30px;
     }
 
-    .events-message {
+    .event-title-line,
+    .event-subtitle {
+        font-size: 3.2rem;
+        margin: 0;
+    }
+
+    .buy-tickets-button {
+        padding: 12px 24px;
         font-size: 1rem;
-        padding: 0 16px;
-        margin: 30px auto;
+        margin-top: 16px;
+    }
+
+    .events-media {
+        width: 100%;
+        max-height: 50vh;
     }
 }

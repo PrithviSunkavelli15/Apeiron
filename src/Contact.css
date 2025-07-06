@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
 
 .contact-container {
     width: 100%;
     background: #0a0000;
-    color: #ff5b5b;
-    font-family: 'Audiowide', 'Orbitron', sans-serif;
+    color: white;
+    font-family: 'Merriweather', serif;
     overflow-x: hidden;
 }
 
@@ -28,61 +28,59 @@
     padding: 0 24px 100px;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 91, 91, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 12px;
-    box-shadow: 0 0 20px rgba(255, 91, 91, 0.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
 }
 
 .contact-form-wrapper h2 {
     font-size: 2rem;
     margin-bottom: 12px;
-    color: #ff4d4d;
-    text-shadow: 0 0 8px #ff1a1a;
+    color: white;
 }
 
 .form-description {
     font-size: 1.1rem;
     margin-bottom: 30px;
-    color: #ddd;
-    opacity: 0.85;
+    color: #f0f0f0;
+    opacity: 0.9;
 }
 
 .contact-form textarea {
     width: 100%;
     min-height: 200px;
     background-color: #140000;
-    border: 2px solid #ff1a1a;
-    color: #fff;
+    border: 2px solid #ffffff;
+    color: #ffffff;
     font-size: 1rem;
     padding: 16px;
     border-radius: 8px;
     resize: vertical;
-    font-family: 'Orbitron', sans-serif;
-    box-shadow: 0 0 10px rgba(255, 91, 91, 0.3);
-    transition: border 0.3s, box-shadow 0.3s;
+    font-family: 'Merriweather', serif;
+    box-shadow: none;
+    transition: border 0.3s;
 }
 
 .contact-form textarea:focus {
-    border-color: #ff5b5b;
+    border-color: #cccccc;
     outline: none;
-    box-shadow: 0 0 15px rgba(255, 91, 91, 0.6);
 }
 
 .contact-form button {
     margin-top: 20px;
-    background: #ff1a1a;
-    color: #fff;
+    background: #ffffff;
+    color: #0a0000;
     padding: 12px 24px;
     font-size: 1rem;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Merriweather', serif;
 }
 
 .contact-form button:hover {
-    background: #ff4d4d;
+    background: #f2f2f2;
     transform: scale(1.05);
 }
 
