@@ -48,7 +48,6 @@ const UpcomingEvents = () => {
         };
     }, []);
 
-    // IntersectionObserver to control playback
     useEffect(() => {
         const video = videoRef.current;
         if (!video) return;

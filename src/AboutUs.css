@@ -1,5 +1,3 @@
-/* src/pages/AboutUs.css */
-
 .about-image-container {
     width: 100%;
     height: 100vh;
@@ -13,7 +11,7 @@
     object-position: center;
 }
 
-/* Ensure full height is respected on all screen sizes */
+/* Adjusts for different screens */
 @media (max-height: 500px) {
     .about-image-container {
         height: auto;

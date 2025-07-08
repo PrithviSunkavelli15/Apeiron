@@ -1,7 +1,7 @@
 // src/pages/AboutUs.js
 import React from "react";
 import "./AboutUs.css";
-import largeImage from "./About.png"; // Ensure this image is in the correct path
+import largeImage from "./About.png";
 
 const AboutUs = () => {
     return (
