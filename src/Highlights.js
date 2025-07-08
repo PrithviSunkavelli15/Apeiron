@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Highlights.css";
 import highlightsImage from "./Highlights.png";
 
@@ -21,6 +21,7 @@ import tjay3 from "./tjay3.jpg";
 
 const Highlights = () => {
     const videoRefs = useRef([]);
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -42,8 +43,18 @@ const Highlights = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    // Check screen width on mount and resize
+    useEffect(() => {
+        const checkScreen = () => {
+            setIsSmallScreen(window.innerWidth <= 1024); // iPad and smaller
+        };
+        checkScreen();
+        window.addEventListener("resize", checkScreen);
+        return () => window.removeEventListener("resize", checkScreen);
+    }, []);
+
     const renderEvent = (title, date, tagline, pics = [], video, refIndex) => (
-        <div className="event-section">
+        <div className="event-section" key={title}>
             <h2 className="event-title">{title}</h2>
             <p className="event-date">{date}</p>
             <p className="event-tagline">{tagline}</p>
@@ -58,7 +69,7 @@ const Highlights = () => {
                 />
             </div>
             {pics.length > 0 && (
-                <div className="event-photos">
+                <div className={`event-photos ${isSmallScreen ? "two-one-layout" : ""}`}>
                     {pics.map((img, idx) => (
                         <img key={idx} src={img} alt={`${title}-${idx}`} className="event-photo" />
                     ))}

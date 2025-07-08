@@ -143,7 +143,7 @@
     }
 }
 
-/* --------- RESPONSIVE --------- */
+/* --------- MOBILE DEVICES --------- */
 @media (max-width: 768px) {
 
     .landing-video,
@@ -188,5 +188,32 @@
         flex: 1 1 100%;
         width: 100%;
         aspect-ratio: 4 / 5;
+    }
+}
+
+/* --------- TABLETS (iPads, Surface Pro) --------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .landing-hero {
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    .landing-video,
+    .landing-image {
+        object-fit: contain;
+        background-color: black;
+        width: 100%;
+        height: 100%;
+    }
+
+    .image-card {
+        flex: 0 1 30%;
+        max-width: 300px;
+        aspect-ratio: 4 / 5;
+    }
+
+    .map-image {
+        max-width: 90%;
+        margin: 0 auto;
     }
 }

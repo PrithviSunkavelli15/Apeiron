@@ -1,7 +1,7 @@
 .navbar {
     top: 0;
     z-index: 999;
-    padding: 1rem 2rem;
+    padding: clamp(0.75rem, 2vw, 1.5rem) clamp(1rem, 4vw, 2rem);
     color: white;
     font-family: 'Helvetica Neue', sans-serif;
     background-image: url('marblebg.jpeg');
@@ -21,7 +21,6 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    /* darker overlay */
     z-index: -1;
 }
 
@@ -29,15 +28,17 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
     flex-wrap: wrap;
+    gap: 1rem;
 }
 
+/* Logo */
 .logo-img {
-    height: 60px;
+    height: clamp(40px, 8vw, 60px);
     width: auto;
 }
 
+/* Hamburger Icon */
 .hamburger {
     display: none;
     font-size: 1.8rem;
@@ -45,11 +46,13 @@
     color: white;
 }
 
+/* Nav Links */
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 3.5rem;
+    gap: clamp(1.5rem, 3.5vw, 3.5rem);
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .nav-links li {
@@ -60,7 +63,7 @@
 .nav-links li .dropdown-toggle {
     color: white;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 1vw + 0.3rem, 1.1rem);
     transition: color 0.3s ease;
     cursor: pointer;
 }
@@ -70,6 +73,7 @@
     color: #cc00ff;
 }
 
+/* Dropdown Menu */
 .dropdown-menu {
     position: absolute;
     top: 100%;
@@ -79,6 +83,7 @@
     list-style: none;
     padding: 0.5rem 1rem;
     z-index: 10;
+    min-width: 160px;
 }
 
 .dropdown-menu li {
@@ -88,18 +93,21 @@
 .dropdown-menu li a {
     color: white;
     text-decoration: none;
+    font-size: 0.95rem;
 }
 
 .dropdown-menu li a:hover {
     color: #cc00ff;
 }
 
+/* Login Buttons */
 .login-button button,
 .mobile-login button {
     background-color: transparent;
     color: white;
     border: 2px solid #cc00ff;
     padding: 0.5rem 1rem;
+    font-size: 0.9rem;
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -138,10 +146,10 @@
 
     .dropdown-menu {
         position: relative;
+        background: none;
         top: 0;
         left: 0;
-        background: none;
-        padding-left: 1rem;
+        padding-left: 0.5rem;
         margin-top: 0.5rem;
     }
 
@@ -151,5 +159,12 @@
 
     .mobile-login {
         margin-top: 1rem;
+    }
+
+    .login-button button,
+    .mobile-login button {
+        width: 100%;
+        font-size: 0.95rem;
+        padding: 10px;
     }
 }
