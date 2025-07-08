@@ -19,7 +19,6 @@ const UpcomingEvents = () => {
                 video.currentTime >= video.duration - 3 &&
                 !fadeIntervalRef.current
             ) {
-                // Start fading out volume
                 fadeIntervalRef.current = setInterval(() => {
                     if (video.volume > 0.05) {
                         video.volume = Math.max(0, video.volume - 0.05);
@@ -32,9 +31,7 @@ const UpcomingEvents = () => {
             }
         };
 
-        const handleEnded = () => {
-            setShowPoster(true);
-        };
+        const handleEnded = () => setShowPoster(true);
 
         if (video) {
             video.volume = 1;
@@ -49,6 +46,28 @@ const UpcomingEvents = () => {
             }
             clearInterval(fadeIntervalRef.current);
         };
+    }, []);
+
+    // IntersectionObserver to control playback
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    video.play().catch(() => {});
+                } else {
+                    video.pause();
+                }
+            },
+            {
+                threshold: 0.5, // 50% of the video must be in view
+            }
+        );
+
+        observer.observe(video);
+        return () => observer.disconnect();
     }, []);
 
     return (
@@ -81,9 +100,9 @@ const UpcomingEvents = () => {
                             ref={videoRef}
                             src={eventVideo}
                             className="events-media"
-                            autoPlay
                             controls
                             playsInline
+                            muted={false}
                         />
                     ) : (
                         <a

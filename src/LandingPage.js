@@ -6,7 +6,7 @@ import landingVideo from "./videoOneEdit.mp4";
 import NY from "./NY.png";
 import Philly from "./Philly.png";
 import PS from "./PS.png";
-import mapAP from "./mapAP.png"; // ✅ Added map image import
+import mapAP from "./mapAP.png";
 
 const LandingPage = () => {
     const videoRef = useRef(null);
@@ -83,7 +83,6 @@ const LandingPage = () => {
             <div className="value-prop-container">
                 <h1 className="value-prop-title">The Next-Gen Nightlife Brand</h1>
 
-                {/* ✅ New Map Image */}
                 <div className="map-image-container">
                     <img src={mapAP} alt="Apeiron Map" className="map-image" />
                 </div>
@@ -92,12 +91,12 @@ const LandingPage = () => {
                     <Link to="/events" className="image-card">
                         <img src={NY} alt="NYC" />
                     </Link>
-                    <Link to="/events" className="image-card">
+                    <div className="image-card">
                         <img src={Philly} alt="Philly" />
-                    </Link>
-                    <Link to="/events" className="image-card">
+                    </div>
+                    <div className="image-card">
                         <img src={PS} alt="Penn State" />
-                    </Link>
+                    </div>
                 </div>
             </div>
         </div>
