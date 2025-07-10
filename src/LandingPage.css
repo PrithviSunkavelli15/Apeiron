@@ -198,7 +198,7 @@
     /* Shift video/image upward under navbar to hide black bar */
     .landing-video,
     .landing-image {
-        top: -290px;
+        top: -260px;
         /* Adjust as navbar height */
     }
 
