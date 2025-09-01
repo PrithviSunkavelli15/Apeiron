@@ -19,34 +19,58 @@ import tjay1 from "./tjay1.jpg";
 import tjay2 from "./tjay2.jpg";
 import tjay3 from "./tjay3.jpg";
 
+import archivesVideo from "./ArchivesOnlyHighlight.mp4";
+
 const Highlights = () => {
     const videoRefs = useRef([]);
     const [isSmallScreen, setIsSmallScreen] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => {
+        // Use Intersection Observer for better performance on mobile
+        const videoObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    const video = entry.target;
+                    if (entry.isIntersecting) {
+                        if (video.paused) {
+                            video.play().catch(() => { });
+                        }
+                        video.muted = false;
+                    } else {
+                        video.pause();
+                        video.muted = true;
+                    }
+                });
+            },
+            {
+                threshold: 0.3, // 30% of video must be visible
+                rootMargin: '50px' // Start loading 50px before video comes into view
+            }
+        );
+
+        // Observe all videos
+        videoRefs.current.forEach((video) => {
+            if (video) {
+                videoObserver.observe(video);
+            }
+        });
+
+        return () => {
             videoRefs.current.forEach((video) => {
-                if (!video) return;
-                const rect = video.getBoundingClientRect();
-                const isInView = rect.top < window.innerHeight && rect.bottom > 0;
-                if (isInView) {
-                    video.play().catch(() => { });
-                    video.muted = false;
-                } else {
-                    video.pause();
-                    video.muted = true;
+                if (video) {
+                    videoObserver.unobserve(video);
                 }
             });
         };
-
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     // Check screen width on mount and resize
     useEffect(() => {
         const checkScreen = () => {
-            setIsSmallScreen(window.innerWidth <= 1024); // iPad and smaller
+            const width = window.innerWidth;
+            setIsSmallScreen(width <= 1024); // iPad and smaller
+            setIsMobile(width <= 768); // Mobile devices
         };
         checkScreen();
         window.addEventListener("resize", checkScreen);
@@ -64,8 +88,15 @@ const Highlights = () => {
                     controls
                     muted
                     playsInline
+                    preload={isMobile ? "none" : "metadata"}
                     className="event-video"
                     ref={(el) => (videoRefs.current[refIndex] = el)}
+                    style={{
+                        imageRendering: '-webkit-optimize-contrast',
+                        transform: 'translateZ(0)',
+                        backfaceVisibility: 'hidden',
+                        willChange: isMobile ? 'transform' : 'auto'
+                    }}
                 />
             </div>
             {pics.length > 0 && (
@@ -85,12 +116,20 @@ const Highlights = () => {
             </div>
 
             {renderEvent(
+                "Archives Only",
+                "7/25/25",
+                "Hip Hop. Throwbacks. Pop. Archives Only",
+                [],
+                archivesVideo,
+                0
+            )}
+            {renderEvent(
                 "Saints vs Sinners IV ft. Kyle Richh",
                 "04/10/25",
                 "Heaven and hell collided — red horns, white wings, and unforgettable energy.",
                 [saints1, saints2, saints3],
                 saintsVideo,
-                0
+                1
             )}
             {renderEvent(
                 "Fright Night at NOTO III",
@@ -98,7 +137,7 @@ const Highlights = () => {
                 "A haunted night with only one rule: don’t blink.",
                 [],
                 notoVideo,
-                1
+                2
             )}
             {renderEvent(
                 "EZU Club Tour",
@@ -106,7 +145,7 @@ const Highlights = () => {
                 "Desi heat turned all the way up. An unforgettable afterparty experience.",
                 [ezu1, ezu2, ezu3],
                 ezuVideo,
-                2
+                3
             )}
             {renderEvent(
                 "Official Lil Tjay Tour Afterparty",
@@ -114,7 +153,7 @@ const Highlights = () => {
                 "Apeiron lit up the city for Lil Tjay’s afterparty — vibes unmatched.",
                 [tjay1, tjay2, tjay3],
                 tjayVideo,
-                3
+                4
             )}
         </div>
     );

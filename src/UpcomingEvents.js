@@ -1,72 +1,20 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./UpcomingEvents.css";
 import landingImage from "./Events.png";
-import eventPoster from "./archivesEventPoster.png";
-import eventVideo from "./archivesOnly.mp4";
+import frightnightImage from "./frightnight4.JPEG";
+
+// Preload critical images
+const preloadImage = (src) => {
+    const img = new Image();
+    img.src = src;
+};
 
 const UpcomingEvents = () => {
-    const videoRef = useRef(null);
-    const [showPoster, setShowPoster] = useState(false);
-    const fadeIntervalRef = useRef(null);
+    const [imageLoaded, setImageLoaded] = useState(false);
 
+    // Preload critical images on component mount
     useEffect(() => {
-        const video = videoRef.current;
-
-        const handleTimeUpdate = () => {
-            if (
-                video &&
-                video.duration &&
-                video.currentTime >= video.duration - 3 &&
-                !fadeIntervalRef.current
-            ) {
-                fadeIntervalRef.current = setInterval(() => {
-                    if (video.volume > 0.05) {
-                        video.volume = Math.max(0, video.volume - 0.05);
-                    } else {
-                        video.volume = 0;
-                        clearInterval(fadeIntervalRef.current);
-                        fadeIntervalRef.current = null;
-                    }
-                }, 200);
-            }
-        };
-
-        const handleEnded = () => setShowPoster(true);
-
-        if (video) {
-            video.volume = 1;
-            video.addEventListener("timeupdate", handleTimeUpdate);
-            video.addEventListener("ended", handleEnded);
-        }
-
-        return () => {
-            if (video) {
-                video.removeEventListener("timeupdate", handleTimeUpdate);
-                video.removeEventListener("ended", handleEnded);
-            }
-            clearInterval(fadeIntervalRef.current);
-        };
-    }, []);
-
-    useEffect(() => {
-        const video = videoRef.current;
-        if (!video) return;
-
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    video.play().catch(() => {});
-                } else {
-                    video.pause();
-                }
-            },
-            {
-                threshold: 0.5, // 50% of the video must be in view
-            }
-        );
-
-        observer.observe(video);
-        return () => observer.disconnect();
+        preloadImage(frightnightImage);
     }, []);
 
     return (
@@ -80,8 +28,7 @@ const UpcomingEvents = () => {
             <div className="events-row">
                 <div className="events-left">
                     <h2 className="event-title-line">
-                        <span>Archives</span>
-                        <span className="event-subtitle">Only</span>
+                        <span>Fright Night at Noto 4</span>
                     </h2>
                     <a
                         href="https://flite.city/org/the-apeiron-group"
@@ -94,28 +41,25 @@ const UpcomingEvents = () => {
                 </div>
 
                 <div className="events-right">
-                    {!showPoster ? (
-                        <video
-                            ref={videoRef}
-                            src={eventVideo}
-                            className="events-media"
-                            controls
-                            playsInline
-                            muted={false}
+                    <a
+                        href="https://flite.city/org/the-apeiron-group"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src={frightnightImage}
+                            alt="Fright Night at Noto 4"
+                            className={`events-media ${imageLoaded ? 'image-loaded' : 'image-loading'}`}
+                            loading="lazy"
+                            decoding="async"
+                            onLoad={() => setImageLoaded(true)}
                         />
-                    ) : (
-                        <a
-                            href="https://www.instagram.com/p/DLYc2qHMaIj/?img_index=1"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <img
-                                src={eventPoster}
-                                alt="Archives Only Poster"
-                                className="events-media fade-in"
-                            />
-                        </a>
-                    )}
+                        {!imageLoaded && (
+                            <div className="image-loading-placeholder">
+                                <div className="loading-spinner"></div>
+                            </div>
+                        )}
+                    </a>
                 </div>
             </div>
         </div>
