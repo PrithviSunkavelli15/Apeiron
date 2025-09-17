@@ -85,3 +85,4 @@ The improvements are automatically applied when the landing page loads. No addit
 - Video quality is displayed in the top-right corner
 - Loading states show video initialization progress
 - Console logs provide debugging information for quality detection
+
