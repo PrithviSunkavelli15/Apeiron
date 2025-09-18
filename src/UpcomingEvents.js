@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./UpcomingEvents.css";
 import landingImage from "./Events.png";
 import frightnightImage from "./frightnight4.JPEG";
-import apeironFlyer from "./ApeironFlyer.png";
+import apeironFlyer from "./ApeironFlyer.jpeg";
 
 // Preload critical images
 const preloadImage = (src) => {
