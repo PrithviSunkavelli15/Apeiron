@@ -2,6 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Highlights.css";
 import highlightsImage from "./Highlights.png";
 
+import notoIVVideo from "./frightnightIV.mp4";
+import notoIV1 from "./notoIV1.jpg";
+import notoIV2 from "./notoIV2.jpg";
+import notoIV3 from "./notoIV3.jpg";
+
 import saintsVideo from "./saints.mp4";
 import saints1 from "./saints1.jpg";
 import saints2 from "./saints2.jpg";
@@ -116,12 +121,20 @@ const Highlights = () => {
             </div>
 
             {renderEvent(
+                "Fright Night at Noto 4",
+                "10/30/25",
+                "A haunted night with only one rule: don't blink.",
+                [notoIV1, notoIV2, notoIV3],
+                notoIVVideo,
+                0
+            )}
+            {renderEvent(
                 "Archives Only",
                 "7/25/25",
                 "Hip Hop. Throwbacks. Pop. Archives Only",
                 [],
                 archivesVideo,
-                0
+                1
             )}
             {renderEvent(
                 "Saints vs Sinners IV ft. Kyle Richh",
@@ -129,15 +142,15 @@ const Highlights = () => {
                 "Heaven and hell collided — red horns, white wings, and unforgettable energy.",
                 [saints1, saints2, saints3],
                 saintsVideo,
-                1
+                2
             )}
             {renderEvent(
                 "Fright Night at NOTO III",
                 "10/31/24",
-                "A haunted night with only one rule: don’t blink.",
+                "A haunted night with only one rule: don't blink.",
                 [],
                 notoVideo,
-                2
+                3
             )}
             {renderEvent(
                 "EZU Club Tour",
@@ -145,15 +158,15 @@ const Highlights = () => {
                 "Desi heat turned all the way up. An unforgettable afterparty experience.",
                 [ezu1, ezu2, ezu3],
                 ezuVideo,
-                3
+                4
             )}
             {renderEvent(
                 "Official Lil Tjay Tour Afterparty",
                 "12/01/23",
-                "Apeiron lit up the city for Lil Tjay’s afterparty — vibes unmatched.",
+                "Apeiron lit up the city for Lil Tjay's afterparty — vibes unmatched.",
                 [tjay1, tjay2, tjay3],
                 tjayVideo,
-                4
+                5
             )}
         </div>
     );

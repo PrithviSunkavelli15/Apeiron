@@ -5,7 +5,6 @@ import member1 from "./member1.jpg";
 import member3 from "./member3.jpg";
 import member4 from "./member4.jpg";
 import member5 from "./member5.PNG";
-import member6 from "./member6.jpg";
 import member7 from "./member7.png";
 import member8 from "./member8.jpg";
 import member9 from "./member9.jpg";
@@ -35,12 +34,6 @@ const members = [
         name: "Jasper Merigala",
         position: "Penn State University Branch Operations Manager",
         instagram: "https://www.instagram.com/jaspermerigala_?igsh=MTRpamRpMmNmYXAzMg=="
-    },
-    {
-        img: member6,
-        name: "Emmanuel Charles",
-        position: "Penn State University Branch Operations Manager",
-        instagram: "https://www.instagram.com/emmaniboi?igsh=bjdtaDc3cG0weDA="
     },
     {
         img: member7,
