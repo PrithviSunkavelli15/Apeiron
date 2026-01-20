@@ -178,6 +178,15 @@
     transform: scale(1.03);
 }
 
+.event-flyer-clickable {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.event-flyer-clickable:hover {
+    transform: scale(1.05);
+}
+
 /* Fade In Animation */
 .fade-in {
     opacity: 0;

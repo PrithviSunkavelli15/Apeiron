@@ -24,16 +24,24 @@ import tjay1 from "./tjay1.jpg";
 import tjay2 from "./tjay2.jpg";
 import tjay3 from "./tjay3.jpg";
 
+import temptedVideo from "./tempted.mp4";
+import tempted1 from "./tempted1.jpg";
+import tempted2 from "./tempted2.jpg";
+import tempted3 from "./tempted3.jpg";
+
+import meekmillVideo from "./meekmill.mp4";
+
 import archivesVideo from "./ArchivesOnlyHighlight.mp4";
 
 const Highlights = () => {
     const videoRefs = useRef([]);
+    const videoObserverRef = useRef(null);
     const [isSmallScreen, setIsSmallScreen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
         // Use Intersection Observer for better performance on mobile
-        const videoObserver = new IntersectionObserver(
+        videoObserverRef.current = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
                     const video = entry.target;
@@ -54,19 +62,21 @@ const Highlights = () => {
             }
         );
 
-        // Observe all videos
+        // Observe all videos that are already in the refs array
         videoRefs.current.forEach((video) => {
-            if (video) {
-                videoObserver.observe(video);
+            if (video && videoObserverRef.current) {
+                videoObserverRef.current.observe(video);
             }
         });
 
         return () => {
-            videoRefs.current.forEach((video) => {
-                if (video) {
-                    videoObserver.unobserve(video);
-                }
-            });
+            if (videoObserverRef.current) {
+                videoRefs.current.forEach((video) => {
+                    if (video) {
+                        videoObserverRef.current.unobserve(video);
+                    }
+                });
+            }
         };
     }, []);
 
@@ -95,7 +105,19 @@ const Highlights = () => {
                     playsInline
                     preload={isMobile ? "none" : "metadata"}
                     className="event-video"
-                    ref={(el) => (videoRefs.current[refIndex] = el)}
+                    ref={(el) => {
+                        // Clean up previous video if it exists
+                        const previousVideo = videoRefs.current[refIndex];
+                        if (previousVideo && videoObserverRef.current) {
+                            videoObserverRef.current.unobserve(previousVideo);
+                        }
+                        
+                        videoRefs.current[refIndex] = el;
+                        // Observe the video immediately when ref is set
+                        if (el && videoObserverRef.current) {
+                            videoObserverRef.current.observe(el);
+                        }
+                    }}
                     style={{
                         imageRendering: '-webkit-optimize-contrast',
                         transform: 'translateZ(0)',
@@ -121,12 +143,28 @@ const Highlights = () => {
             </div>
 
             {renderEvent(
+                "Tempted x The Apeiron Group",
+                "12/11/25",
+                "An unforgettable night of music and energy.",
+                [tempted1, tempted2, tempted3],
+                temptedVideo,
+                0
+            )}
+            {renderEvent(
+                "Meek Mill @ Noto",
+                "12/6/25",
+                "An electrifying performance that brought the house down.",
+                [],
+                meekmillVideo,
+                1
+            )}
+            {renderEvent(
                 "Fright Night at Noto 4",
                 "10/30/25",
                 "A haunted night with only one rule: don't blink.",
                 [notoIV1, notoIV2, notoIV3],
                 notoIVVideo,
-                0
+                2
             )}
             {renderEvent(
                 "Archives Only",
@@ -134,7 +172,7 @@ const Highlights = () => {
                 "Hip Hop. Throwbacks. Pop. Archives Only",
                 [],
                 archivesVideo,
-                1
+                3
             )}
             {renderEvent(
                 "Saints vs Sinners IV ft. Kyle Richh",
@@ -142,7 +180,7 @@ const Highlights = () => {
                 "Heaven and hell collided — red horns, white wings, and unforgettable energy.",
                 [saints1, saints2, saints3],
                 saintsVideo,
-                2
+                4
             )}
             {renderEvent(
                 "Fright Night at NOTO III",
@@ -150,7 +188,7 @@ const Highlights = () => {
                 "A haunted night with only one rule: don't blink.",
                 [],
                 notoVideo,
-                3
+                5
             )}
             {renderEvent(
                 "EZU Club Tour",
@@ -158,7 +196,7 @@ const Highlights = () => {
                 "Desi heat turned all the way up. An unforgettable afterparty experience.",
                 [ezu1, ezu2, ezu3],
                 ezuVideo,
-                4
+                6
             )}
             {renderEvent(
                 "Official Lil Tjay Tour Afterparty",
@@ -166,7 +204,7 @@ const Highlights = () => {
                 "Apeiron lit up the city for Lil Tjay's afterparty — vibes unmatched.",
                 [tjay1, tjay2, tjay3],
                 tjayVideo,
-                5
+                7
             )}
         </div>
     );
