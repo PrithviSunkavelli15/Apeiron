@@ -63,7 +63,7 @@ const LandingPage = () => {
             
             video.play().catch(() => {});
         }
-    }, []);
+    }, [muted]);
 
     useEffect(() => {
         const video = videoRef.current;

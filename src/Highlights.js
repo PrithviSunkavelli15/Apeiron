@@ -63,7 +63,8 @@ const Highlights = () => {
         );
 
         // Observe all videos that are already in the refs array
-        videoRefs.current.forEach((video) => {
+        const currentVideoRefs = videoRefs.current;
+        currentVideoRefs.forEach((video) => {
             if (video && videoObserverRef.current) {
                 videoObserverRef.current.observe(video);
             }
@@ -71,7 +72,7 @@ const Highlights = () => {
 
         return () => {
             if (videoObserverRef.current) {
-                videoRefs.current.forEach((video) => {
+                currentVideoRefs.forEach((video) => {
                     if (video) {
                         videoObserverRef.current.unobserve(video);
                     }
