@@ -48,6 +48,14 @@
     margin-bottom: 30px;
 }
 
+.event-credits {
+    margin-top: 16px;
+    font-size: 0.9rem;
+    color: #bdbdbd;
+    opacity: 0.7;
+    letter-spacing: 0.4px;
+}
+
 .event-media {
     display: flex;
     justify-content: center;
@@ -138,6 +146,11 @@
         text-shadow: none;
     }
 
+    .event-credits {
+        font-size: 0.85rem;
+        opacity: 0.65;
+    }
+
     .event-video {
         width: 100%;
         max-height: 40vh;
@@ -190,6 +203,10 @@
         font-size: 0.95rem;
         color: #d1a3a3;
         text-shadow: none;
+    }
+
+    .event-credits {
+        font-size: 0.82rem;
     }
 }
 

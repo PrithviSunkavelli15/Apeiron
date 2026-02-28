@@ -14,6 +14,11 @@ import saints3 from "./saints3.jpg";
 
 import notoVideo from "./frightnight.mp4";
 
+import navVideo from "./NavVideo.mov";
+import nav1 from "./Nav1.jpg";
+import nav2 from "./Nav2.jpg";
+import nav3 from "./Nav3.jpg";
+
 import ezuVideo from "./ezu.mp4";
 import ezu1 from "./ezu1.jpg";
 import ezu2 from "./ezu2.jpg";
@@ -93,7 +98,7 @@ const Highlights = () => {
         return () => window.removeEventListener("resize", checkScreen);
     }, []);
 
-    const renderEvent = (title, date, tagline, pics = [], video, refIndex) => (
+    const renderEvent = (title, date, tagline, pics = [], video, refIndex, credits) => (
         <div className="event-section" key={title}>
             <h2 className="event-title">{title}</h2>
             <p className="event-date">{date}</p>
@@ -134,6 +139,7 @@ const Highlights = () => {
                     ))}
                 </div>
             )}
+            {credits && <p className="event-credits">{credits}</p>}
         </div>
     );
 
@@ -144,12 +150,21 @@ const Highlights = () => {
             </div>
 
             {renderEvent(
+                "Nav @ Noto",
+                "January 24, 2025",
+                "A packed night of energy at Noto.",
+                [nav1, nav2, nav3],
+                navVideo,
+                0,
+                "Credits: Bhavin Mistry"
+            )}
+            {renderEvent(
                 "Tempted x The Apeiron Group",
                 "12/11/25",
                 "An unforgettable night of music and energy.",
                 [tempted1, tempted2, tempted3],
                 temptedVideo,
-                0
+                1
             )}
             {renderEvent(
                 "Meek Mill @ Noto",
@@ -157,7 +172,7 @@ const Highlights = () => {
                 "An electrifying performance that brought the house down.",
                 [],
                 meekmillVideo,
-                1
+                2
             )}
             {renderEvent(
                 "Fright Night at Noto 4",
@@ -165,7 +180,7 @@ const Highlights = () => {
                 "A haunted night with only one rule: don't blink.",
                 [notoIV1, notoIV2, notoIV3],
                 notoIVVideo,
-                2
+                3
             )}
             {renderEvent(
                 "Archives Only",
@@ -173,7 +188,7 @@ const Highlights = () => {
                 "Hip Hop. Throwbacks. Pop. Archives Only",
                 [],
                 archivesVideo,
-                3
+                4
             )}
             {renderEvent(
                 "Saints vs Sinners IV ft. Kyle Richh",
@@ -181,7 +196,7 @@ const Highlights = () => {
                 "Heaven and hell collided — red horns, white wings, and unforgettable energy.",
                 [saints1, saints2, saints3],
                 saintsVideo,
-                4
+                5
             )}
             {renderEvent(
                 "Fright Night at NOTO III",
@@ -189,7 +204,7 @@ const Highlights = () => {
                 "A haunted night with only one rule: don't blink.",
                 [],
                 notoVideo,
-                5
+                6
             )}
             {renderEvent(
                 "EZU Club Tour",
@@ -197,7 +212,7 @@ const Highlights = () => {
                 "Desi heat turned all the way up. An unforgettable afterparty experience.",
                 [ezu1, ezu2, ezu3],
                 ezuVideo,
-                6
+                7
             )}
             {renderEvent(
                 "Official Lil Tjay Tour Afterparty",
@@ -205,7 +220,7 @@ const Highlights = () => {
                 "Apeiron lit up the city for Lil Tjay's afterparty — vibes unmatched.",
                 [tjay1, tjay2, tjay3],
                 tjayVideo,
-                7
+                8
             )}
         </div>
     );
