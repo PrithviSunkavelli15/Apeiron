@@ -22,7 +22,7 @@ const LandingPage = () => {
             video.muted = muted;
             
             // Enhanced video quality settings
-            video.preload = "auto";
+            video.preload = "metadata";
             video.playsInline = true;
             video.autoplay = true;
             
@@ -109,8 +109,8 @@ const LandingPage = () => {
                     autoPlay
                     playsInline
                     muted={muted}
-                    preload="auto"
-                    poster=""
+                    preload="metadata"
+                    poster={landingImage}
                     crossOrigin="anonymous"
                     style={{
                         imageRendering: '-webkit-optimize-contrast',
@@ -130,6 +130,8 @@ const LandingPage = () => {
                     src={landingImage}
                     alt="Landing"
                     className={`landing-image ${showImage ? "fade-in-smooth" : "hidden-image"}`}
+                    loading="eager"
+                    decoding="async"
                 />
                 {muted && (
                     <button onClick={toggleMute} className="unmute-button">
@@ -144,18 +146,24 @@ const LandingPage = () => {
                 <h1 className="value-prop-title">The Next-Gen Nightlife Brand</h1>
 
                 <div className="map-image-container">
-                    <img src={mapAP} alt="Apeiron Map" className="map-image" />
+                    <img
+                        src={mapAP}
+                        alt="Apeiron Map"
+                        className="map-image"
+                        loading="lazy"
+                        decoding="async"
+                    />
                 </div>
 
                 <div className="image-row">
                     <Link to="/events" className="image-card">
-                        <img src={NY} alt="NYC" />
+                        <img src={NY} alt="NYC" loading="lazy" decoding="async" />
                     </Link>
                     <div className="image-card">
-                        <img src={Philly} alt="Philly" />
+                        <img src={Philly} alt="Philly" loading="lazy" decoding="async" />
                     </div>
                     <div className="image-card">
-                        <img src={PS} alt="Penn State" />
+                        <img src={PS} alt="Penn State" loading="lazy" decoding="async" />
                     </div>
                 </div>
             </div>

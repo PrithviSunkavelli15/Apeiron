@@ -29,7 +29,13 @@ const Navbar = () => {
         <nav className="navbar">
             <div className="navbar-container">
                 <Link to="/" onClick={closeMenu}>
-                    <img src={logo} alt="Apeiron Logo" className="logo-img" />
+                    <img
+                        src={logo}
+                        alt="Apeiron Logo"
+                        className="logo-img"
+                        loading="eager"
+                        decoding="async"
+                    />
                 </Link>
 
                 <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>

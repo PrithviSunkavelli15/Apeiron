@@ -15,7 +15,13 @@ const Contact = () => {
     return (
         <div className="contact-container">
             <div className="contact-image-container">
-                <img src={contactImage} alt="Contact Us" className="contact-full-image" />
+                <img
+                    src={contactImage}
+                    alt="Contact Us"
+                    className="contact-full-image"
+                    loading="eager"
+                    decoding="async"
+                />
             </div>
 
             <div className="contact-form-wrapper">

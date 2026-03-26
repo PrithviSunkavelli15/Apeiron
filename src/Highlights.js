@@ -120,7 +120,8 @@ const Highlights = () => {
                         controls
                         muted
                         playsInline
-                        preload={isMobile ? "none" : "metadata"}
+                        preload="metadata"
+                        poster={pics.length > 0 ? pics[0] : undefined}
                         className="event-video"
                         ref={(el) => {
                             // Clean up previous video if it exists
@@ -148,6 +149,8 @@ const Highlights = () => {
                             src={headerImage}
                             alt={`${title} header`}
                             className={`event-header-image ${headerClass || ""}`.trim()}
+                            loading="lazy"
+                            decoding="async"
                         />
                     )
                 )}
@@ -155,7 +158,14 @@ const Highlights = () => {
             {pics.length > 0 && (
                 <div className={`event-photos ${isSmallScreen ? "two-one-layout" : ""}`}>
                     {pics.map((img, idx) => (
-                        <img key={idx} src={img} alt={`${title}-${idx}`} className="event-photo" />
+                        <img
+                            key={idx}
+                            src={img}
+                            alt={`${title}-${idx}`}
+                            className="event-photo"
+                            loading="lazy"
+                            decoding="async"
+                        />
                     ))}
                 </div>
             )}
@@ -166,7 +176,13 @@ const Highlights = () => {
     return (
         <div className="highlights-section">
             <div className="highlights-image-container">
-                <img src={highlightsImage} alt="Highlights" className="highlights-full-image" />
+                <img
+                    src={highlightsImage}
+                    alt="Highlights"
+                    className="highlights-full-image"
+                    loading="eager"
+                    decoding="async"
+                />
             </div>
 
             {renderEvent(

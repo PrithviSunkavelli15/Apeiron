@@ -12,7 +12,13 @@ const UpcomingEvents = () => {
         <div className="events-section">
             {/* Top Landing Image */}
             <div className="events-image-container">
-                <img src={landingImage} alt="Upcoming Events" className="events-full-image" />
+                <img
+                    src={landingImage}
+                    alt="Upcoming Events"
+                    className="events-full-image"
+                    loading="eager"
+                    decoding="async"
+                />
             </div>
 
             {/* Empire in Ivory Event */}
@@ -29,6 +35,8 @@ const UpcomingEvents = () => {
                         alt="Empire in Ivory"
                         className="events-media event-flyer-clickable"
                         onClick={handleEmpireInIvoryClick}
+                        loading="lazy"
+                        decoding="async"
                     />
                 </div>
             </div>

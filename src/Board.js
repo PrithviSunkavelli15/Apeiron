@@ -72,7 +72,13 @@ const Board = () => {
     return (
         <div className="board-section">
             <div className="board-image-container">
-                <img src={boardImage} alt="Board" className="board-full-image" />
+                <img
+                    src={boardImage}
+                    alt="Board"
+                    className="board-full-image"
+                    loading="eager"
+                    decoding="async"
+                />
             </div>
             <div className="board-description">
                 <p>
@@ -92,7 +98,13 @@ const Board = () => {
                         {members.slice(startIndex, startIndex + 3).map((m, i) => (
                             <div className="member-card" key={i + startIndex}>
                                 <a href={m.instagram} target="_blank" rel="noopener noreferrer">
-                                    <img src={m.img} alt={m.name} className="member-photo hover-scale" />
+                                    <img
+                                        src={m.img}
+                                        alt={m.name}
+                                        className="member-photo hover-scale"
+                                        loading="lazy"
+                                        decoding="async"
+                                    />
                                 </a>
                                 <div className="member-info">
                                     <h3 className="member-name">{m.name}</h3>

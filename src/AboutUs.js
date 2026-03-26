@@ -10,6 +10,8 @@ const AboutUs = () => {
                 src={largeImage}
                 alt="About Us"
                 className="about-full-image"
+                loading="eager"
+                decoding="async"
             />
         </div>
     );
