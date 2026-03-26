@@ -9,6 +9,7 @@ import member7 from "./member7.png";
 import member8 from "./member8.jpg";
 import member9 from "./member9.jpg";
 import member10 from "./member10.png";
+import member12 from "./member12.JPEG";
 
 const members = [
     {
@@ -58,6 +59,12 @@ const members = [
         name: "Brandon Him",
         position: "Official Company Videographer",
         instagram: "https://www.instagram.com/yowtfbrandon?igsh=eDVtM2hrb2xoOGF3"
+    },
+    {
+        img: member12,
+        name: "Nathan John",
+        position: "Director of Legal Affairs",
+        instagram: "#"
     }
 ];
 

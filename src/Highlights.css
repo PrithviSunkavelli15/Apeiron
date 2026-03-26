@@ -81,6 +81,44 @@
     -webkit-backface-visibility: hidden;
 }
 
+.event-header-image {
+    object-fit: contain;
+    background: transparent;
+    box-shadow: none;
+    transition: transform 0.3s ease;
+}
+
+.event-header-image:hover {
+    transform: scale(1.03);
+}
+
+.event-header-image-wide {
+    width: 90% !important;
+    max-width: 1500px !important;
+    height: 70vh;
+    aspect-ratio: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.event-header-image-standard {
+    width: 90%;
+    max-width: 920px;
+    max-height: 60vh;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+}
+
+.event-header-image-nyc {
+    width: 100%;
+    max-width: 1300px;
+    height: auto;
+    max-height: 70vh;
+    aspect-ratio: auto;
+    object-fit: contain;
+    object-position: center;
+}
+
 /* Event Photos Grid */
 .event-photos {
     display: flex;
@@ -163,6 +201,11 @@
         filter: contrast(1.05) brightness(1.02);
         /* Optimize for mobile rendering */
         contain: layout style paint;
+    }
+
+    .event-header-image {
+        background: transparent;
+        box-shadow: none;
     }
 
     .event-photo {
